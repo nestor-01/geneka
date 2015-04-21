@@ -1,4 +1,4 @@
-package com.geneka.frame.gui;
+package com.geneka.frame.bs;
 
 import java.util.Locale;
 
