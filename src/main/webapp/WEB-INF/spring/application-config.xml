@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
@@ -12,39 +13,52 @@
 	<context:component-scan base-package="com.geneka.frame.bs" />
 	<mvc:annotation-driven />
 
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/nativedb" />
-		<property name="username" value="root" />
-		<property name="password" value="root" />
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
+	  <property name="targetDataSource">
+	    <bean class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+	      <property name="driverClass" value="com.mysql.jdbc.Driver" />
+	      <property name="url" value="jdbc:mysql://localhost:3306/" />
+	      <property name="username" value="root" />
+	      <property name="password" value="root" />
+	    </bean>
+	  </property>
 	</bean>
 
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<tx:annotation-driven transaction-manager="txManager"/>
+	
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	  <property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="emf"/>
+	</bean>
+	
+	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="annotatedClasses">
-			<list>
-				<value>com.beingjavaguys.model.Employee</value>
-			</list>
+		<property name="jpaVendorAdapter">
+			<!--  <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter" /> -->
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</property>
-		<property name="hibernateProperties">
+		<!-- <property name="jpaDialect">
+        	<bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect"/>
+    	</property>  -->
+    	<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.max_fetch_depth">3</prop>
+				<prop key="hibernate.jdbc.fetch_size">50</prop>
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
+    	<property name="packagesToScan" value="com.geneka"/>
 	</bean>
-
-	<bean id="txManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-	<bean id="persistenceExceptionTranslationPostProcessor"
-		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-
-	<bean id="dataDao" class="com.geneka.common.dao.DaoImpl"></bean>
-	<!-- <bean id="dataServices" class="com.beingjavaguys.services.DataServicesImpl"></bean>-->
+	
+	<context:annotation-config/>
+	
+	<context:component-scan base-package="com.consensus" />
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 </beans>
