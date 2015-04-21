@@ -1,4 +1,4 @@
-package remoting.bs;
+package com.geneka.remoting.bs;
 
 public interface RegistryService
 {

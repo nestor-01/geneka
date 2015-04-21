@@ -58,7 +58,7 @@
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
-    	<property name="packagesToScan" value="com.consensus"/>
+    	<property name="packagesToScan" value="com.geneka"/>
 	</bean>
 	
 	<context:annotation-config/>

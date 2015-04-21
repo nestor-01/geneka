@@ -17,11 +17,11 @@ public class LoginController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(LoginController.class);
 	
-	@RequestMapping(value = "/activator/{appBeanId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/geneka/", method = RequestMethod.GET)
 	public String openApp(@PathVariable String appBeanId, Locale locale,
 			org.springframework.ui.Model model) {
 		logger.info("Returning hello view");
-		return "";
+		return "index.html";
 	}
 
 }
