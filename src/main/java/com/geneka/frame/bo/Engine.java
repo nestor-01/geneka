@@ -1,5 +1,5 @@
 package com.geneka.frame.bo;
 
-public class engine {
+public interface Engine {
 
 }
