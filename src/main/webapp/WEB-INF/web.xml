@@ -7,13 +7,7 @@
 
 	<display-name>geneka</display-name>
 
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			classpath:spring/application-config.xml
-		</param-value>
-	</context-param>
-
+	
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
