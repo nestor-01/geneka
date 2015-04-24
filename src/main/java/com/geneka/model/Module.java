@@ -1,7 +1,9 @@
 package com.geneka.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -11,7 +13,10 @@ import java.util.List;
  */
 @Entity
 @Table(name="module")
-@NamedQuery(name="Module.findAll", query="SELECT m FROM Module m")
+@NamedQueries(
+		{
+		@NamedQuery(name="Module.findAll", query="SELECT m FROM Module m")
+		})
 public class Module implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -26,19 +31,10 @@ public class Module implements Serializable {
 	@Column(length=255)
 	private String path;
 
-	//bi-directional many-to-one association to Group
-	@OneToMany(mappedBy="module")
-	private List<Group> groups;
+	@Column(name="parents_id")
+	private Integer parentsId;
 
-	//bi-directional many-to-one association to Module
-	@ManyToOne
-	@JoinColumn(name="parents_id")
-	private Module module;
-
-	//bi-directional many-to-one association to Module
-	@OneToMany(mappedBy="module")
-	private List<Module> modules;
-
+	
 	public Module() {
 	}
 
@@ -66,56 +62,12 @@ public class Module implements Serializable {
 		this.path = path;
 	}
 
-	public List<Group> getGroups() {
-		return this.groups;
+	public Integer getParentsId() {
+		return parentsId;
 	}
 
-	public void setGroups(List<Group> groups) {
-		this.groups = groups;
-	}
-
-	public Group addGroup(Group group) {
-		getGroups().add(group);
-		group.setModule(this);
-
-		return group;
-	}
-
-	public Group removeGroup(Group group) {
-		getGroups().remove(group);
-		group.setModule(null);
-
-		return group;
-	}
-
-	public Module getModule() {
-		return this.module;
-	}
-
-	public void setModule(Module module) {
-		this.module = module;
-	}
-
-	public List<Module> getModules() {
-		return this.modules;
-	}
-
-	public void setModules(List<Module> modules) {
-		this.modules = modules;
-	}
-
-	public Module addModule(Module module) {
-		getModules().add(module);
-		module.setModule(this);
-
-		return module;
-	}
-
-	public Module removeModule(Module module) {
-		getModules().remove(module);
-		module.setModule(null);
-
-		return module;
+	public void setParentsId(Integer parentsId) {
+		this.parentsId = parentsId;
 	}
 
 }

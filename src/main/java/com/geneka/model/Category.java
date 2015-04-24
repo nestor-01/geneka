@@ -1,7 +1,9 @@
 package com.geneka.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -11,7 +13,10 @@ import java.util.List;
  */
 @Entity
 @Table(name="category")
-@NamedQuery(name="Category.findAll", query="SELECT c FROM Category c")
+@NamedQueries(
+		{
+		@NamedQuery(name="Category.findAll", query="SELECT c FROM Category c")
+		})
 public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -28,14 +33,8 @@ public class Category implements Serializable {
 
 	private int value;
 
-	//bi-directional many-to-one association to Category
-	@ManyToOne
-	@JoinColumn(name="parents_id")
-	private Category category;
-
-	//bi-directional many-to-one association to Category
-	@OneToMany(mappedBy="category")
-	private List<Category> categories;
+	@Column(name="parents_id")
+	private Integer parentsId;
 
 	public Category() {
 	}
@@ -72,34 +71,12 @@ public class Category implements Serializable {
 		this.value = value;
 	}
 
-	public Category getCategory() {
-		return this.category;
+	public Integer getParentsId() {
+		return parentsId;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public List<Category> getCategories() {
-		return this.categories;
-	}
-
-	public void setCategories(List<Category> categories) {
-		this.categories = categories;
-	}
-
-	public Category addCategory(Category category) {
-		getCategories().add(category);
-		category.setCategory(this);
-
-		return category;
-	}
-
-	public Category removeCategory(Category category) {
-		getCategories().remove(category);
-		category.setCategory(null);
-
-		return category;
+	public void setParentsId(Integer parentsId) {
+		this.parentsId = parentsId;
 	}
 
 }

@@ -43,17 +43,17 @@ public class User implements Serializable {
 	@Column(name="last_name", length=255)
 	private String lastName;
 
-	@Column(name="password")
+	@Column(name="name")
 	private String name;
 
 	@Column(name="password")
 	private String password;
 
 	@Column(name="phone")
-	private int phone;
+	private Integer phone;
 
 	@Column(name="status_user")
-	private byte statusUser;
+	private Integer statusUser;
 
 	@Column(name="group_id_group")
 	private Integer groupId;
@@ -133,23 +133,22 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public int getPhone() {
-		return this.phone;
+	public Integer getPhone() {
+		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(Integer phone) {
 		this.phone = phone;
 	}
-
-	public byte getStatusUser() {
-		return this.statusUser;
+	
+	public Integer getStatusUser() {
+		return statusUser;
 	}
 
-	public void setStatusUser(byte statusUser) {
+	public void setStatusUser(Integer statusUser) {
 		this.statusUser = statusUser;
 	}
 
-	
 	public Integer getGroupId() {
 		return this.groupId;
 	}

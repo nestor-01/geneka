@@ -1,6 +1,7 @@
 package com.geneka.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -10,7 +11,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="localization")
-@NamedQuery(name="Localization.findAll", query="SELECT l FROM Localization l")
+@NamedQueries(
+		{
+		@NamedQuery(name="Localization.findAll", query="SELECT l FROM Localization l")
+		})
 public class Localization implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -25,10 +29,8 @@ public class Localization implements Serializable {
 	@Column(length=255)
 	private String length;
 
-	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="user_id_user", nullable=false)
-	private User user;
+	@Column(name="user_id_user", nullable=false)
+	private Integer userIdUser;
 
 	public Localization() {
 	}
@@ -55,14 +57,6 @@ public class Localization implements Serializable {
 
 	public void setLength(String length) {
 		this.length = length;
-	}
-
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 }

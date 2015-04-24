@@ -1,6 +1,7 @@
 package com.geneka.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -10,7 +11,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="feedback")
-@NamedQuery(name="Feedback.findAll", query="SELECT f FROM Feedback f")
+@NamedQueries(
+		{
+		@NamedQuery(name="Feedback.findAll", query="SELECT f FROM Feedback f")
+		})
 public class Feedback implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,15 +26,13 @@ public class Feedback implements Serializable {
 	@Lob
 	private String comment;
 
-	//bi-directional many-to-one association to Clasification
-	@ManyToOne
-	@JoinColumn(name="clasification_id_clasification", nullable=false)
-	private Clasification clasification;
+	@Column(name="clasification_id_clasification")
+	private Integer clasificationIdClasification;
 
 	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="user_id_user", nullable=false)
-	private User user;
+
+	@Column(name="user_id_user", nullable=false)
+	private Integer userIdUser;
 
 	public Feedback() {
 	}
@@ -51,20 +53,20 @@ public class Feedback implements Serializable {
 		this.comment = comment;
 	}
 
-	public Clasification getClasification() {
-		return this.clasification;
+	public Integer getClasificationIdClasification() {
+		return clasificationIdClasification;
 	}
 
-	public void setClasification(Clasification clasification) {
-		this.clasification = clasification;
+	public void setClasificationIdClasification(Integer clasificationIdClasification) {
+		this.clasificationIdClasification = clasificationIdClasification;
 	}
 
-	public User getUser() {
-		return this.user;
+	public Integer getUserIdUser() {
+		return userIdUser;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserIdUser(Integer userIdUser) {
+		this.userIdUser = userIdUser;
 	}
 
 }
