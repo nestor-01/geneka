@@ -1,7 +1,9 @@
 package com.geneka.user.ws;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,15 +16,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.geneka.common.util.DefaultContextImpl;
 import com.geneka.common.util.Tools;
 import com.geneka.model.User;
 import com.geneka.user.bo.UserEngine;
+import com.geneka.user.bs.UserService;
 
 
 
@@ -33,15 +39,53 @@ public class UserWS {
 	@Autowired
 	UserEngine userEngine;
 	
+	@Autowired
+	UserService userService;
+	
 	private static final Logger logger = LoggerFactory
 			.getLogger(UserWS.class);
 	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public @ResponseBody String getAllUsers() throws Exception
+	public @ResponseBody String test() throws Exception
 	{
 		List<User> lstUsers = userEngine.getUsers();
-		logger.info("consume service ------>>>");
 		return Tools.serializeToJSon(lstUsers);
 	}
+	
+	@RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
+	public @ResponseBody String getAllUsers() throws Exception
+	{
+		List<User> lstUsers = userService.getAllUsers();
+		return Tools.serializeToJSon(lstUsers);
+	}
+	
+	@RequestMapping(value = "/getUserById", method = RequestMethod.POST)
+	public @ResponseBody String getUserById(@RequestParam("id") Integer id) throws Exception
+	{
+		User user = userService.getUserById(id);
+		return Tools.serializeToJSon(user);
+	}
+	
+	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
+	public @ResponseBody String saveUser(@RequestBody String paramsNewUser) throws Exception
+	{
+		Map<String, Object> attributesDef = new DefaultContextImpl();
+		try
+		{
+			HashMap attributes = Tools.deserializeFromJSon(paramsNewUser, HashMap.class);
+			attributesDef.putAll(attributes);
+			//User
+			//attributesDef.get("name");
+			
+		}
+		catch (Exception e)
+		{
+			
+		}
+		
+		
+		return "";//Tools.serializeToJSon(user);
+	}
+	
 
 }

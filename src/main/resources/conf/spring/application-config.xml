@@ -64,6 +64,7 @@
     
     <!-- Service classes -->
     <bean id="userEngine" class="com.geneka.user.bo.UserEngineImpl"/>
+    <bean id="userService" class="com.geneka.user.bo.UserServiceImpl"/>
 	<!-- End service classes -->
 	
 
