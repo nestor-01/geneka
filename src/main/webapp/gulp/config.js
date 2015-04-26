@@ -4,6 +4,10 @@ var dest = './build',
 
 module.exports = {
   browserSync: {
+    init: {
+      proxy: '0.0.0.0:3000',   // rails server
+      port: 8080               // cloud9 proxied port to 80
+    },
     server: {
       // We're serving the src folder as well
       // for sass sourcemap linking

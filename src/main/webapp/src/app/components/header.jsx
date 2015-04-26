@@ -1,6 +1,7 @@
 var React = require('react');
 var TopMenu = require('./topMenu.jsx');
 var Swiper = require('./carousels/swiper.jsx');
+var Icons = require('./media/icons.jsx');
 
 var Header = React.createClass({
 
@@ -39,6 +40,12 @@ var Header = React.createClass({
                                         {
                                             section: "3",
                                             text: "Contacto"
+                                        },
+                                        {
+                                            section: "4",
+                                            text: "Ingresar",
+                                            hightlighted: true,
+                                            icon: Icons.user
                                         }
                                     ]} />
                                 </div>
