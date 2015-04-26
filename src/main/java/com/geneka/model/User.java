@@ -50,7 +50,7 @@ public class User implements Serializable {
 	private String password;
 
 	@Column(name="phone")
-	private Integer phone;
+	private String phone;
 
 	@Column(name="status_user")
 	private Integer statusUser;
@@ -133,11 +133,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	

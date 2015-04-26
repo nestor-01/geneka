@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService
 			user.setGender(gender);
 			user.setEmail(email);
 			user.setAddress(address);
-			user.setPhone(groupId);
+			user.setPhone(phone);
 			user.setGroupId(groupId);
 			user.setDateOfBirth(new Date(dateOfBirth));
 			dao.save(user);
