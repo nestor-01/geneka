@@ -6,15 +6,18 @@ import com.geneka.model.User;
 
 public interface UserService {
 	
-	public List<User> getAllUsers() throws Exception;
+	public List<User> getAllUsers()throws Exception;
 	
-	public User getUserById(Integer id) throws Exception;
+	public User getUserById(Integer id)throws Exception;
 	
-	public List<User> getUserByName(String name, String lastName) throws Exception;
+	public List<User> getUserByName(String name, String lastName)throws Exception;
 	
-	public boolean saveUser(User user) throws Exception;
+	public boolean saveUser(User user)throws Exception;
 	
-	public boolean deleteUser(Integer userId) throws Exception;
+	public boolean saveUser(String name, String lastName, String password, String gender, String email,
+			String address, String phone, Integer groupId, String dateOfBirth)throws Exception;
 	
-
+	public boolean deleteUser(Integer userId)throws Exception;
+	
+	
 }
