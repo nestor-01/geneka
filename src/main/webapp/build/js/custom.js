@@ -24,40 +24,6 @@ $(document).ready(function() {
 	      topOffset: -20,
 	    });
       
-      
-      //--------------------------------------------
-      
-      
-
-      
-      
-      //-----------------------------------------------
-      
-      
-      // Intro Carousel
-      /*$("#carousel").owlCarousel({
-         items: 3,
-         itemsDesktop: [1199,3],
-         itemsDesktopSmall: [991,2],
-         slideSpeed: 800,
-         navigation: true,
-         navigationText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
-         pagination: true,
-      });*/
-      
-      // Testimonials Carousel
-      /*$("#testi-carousel").owlCarousel({
-         items: 1,
-         itemsDesktop: [1199,1],
-         itemsDesktopSmall: [991,1],
-         itemsTablet: [768,1],
-         slideSpeed: 800,
-         navigation: true,
-         navigationText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
-         pagination: true,
-         autoHeight: true,
-      });*/
-      
       //-----------------------------------------------
       
       

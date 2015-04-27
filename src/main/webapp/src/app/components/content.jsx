@@ -5,6 +5,8 @@ var GallerySection = require('./sections/gallerySection.jsx');
 var FeatureSection = require('./sections/featureSection.jsx');
 var TestimonialSection = require('./sections/testimonialsSection.jsx');
 
+var Icons = require('./media/icons.jsx');
+
 var Content = React.createClass({
 
     render: function()
@@ -15,12 +17,12 @@ var Content = React.createClass({
                 <GallerySection />
                 <FeatureSection features={[
                     {
-                        icon: 'rocket',
+                        icon: Icons.rocket,
                         title: 'Diseño moderno',
                         content: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempo'
                     },
                     {
-                        icon: 'cogs',
+                        icon: Icons.cogs,
                         title: 'Fácil de personalizar',
                         content: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempo'
                     }

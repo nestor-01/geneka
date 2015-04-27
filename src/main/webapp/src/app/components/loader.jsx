@@ -5,8 +5,8 @@ var Loader = React.createClass({
     componentDidMount: function()
     {
         $(window).load(function() {
-            $(this.refs.loadWrapper.getDOMNode()).delay(450).fadeOut();
-            $(this.refs.loader.getDOMNode()).delay(750).fadeOut('slow');
+            $(React.findDOMNode(this.refs.loadWrapper)).delay(450).fadeOut();
+            $(React.findDOMNode(this.refs.loader)).delay(750).fadeOut('slow');
         }.bind(this));
     },
 

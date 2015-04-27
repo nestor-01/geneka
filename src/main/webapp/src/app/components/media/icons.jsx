@@ -1,4 +1,5 @@
 module.exports = {
   user: 'fa fa-user',
-  bed: 'fa fa-bed'
+  rocket: 'fa fa-rocket',
+  cogs: 'fa fa-cogs'
 };

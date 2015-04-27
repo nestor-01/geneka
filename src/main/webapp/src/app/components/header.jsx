@@ -1,4 +1,5 @@
 var React = require('react');
+
 var TopMenu = require('./topMenu.jsx');
 var Swiper = require('./carousels/swiper.jsx');
 var Icons = require('./media/icons.jsx');
@@ -27,6 +28,7 @@ var Header = React.createClass({
                                     <TopMenu items={[
                                         {
                                             section: "0",
+                                            url: "/",
                                             text: "Inicio"
                                         },
                                         {
@@ -44,6 +46,7 @@ var Header = React.createClass({
                                         {
                                             section: "4",
                                             text: "Ingresar",
+                                            url: "signup",
                                             hightlighted: true,
                                             icon: Icons.user
                                         }

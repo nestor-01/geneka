@@ -20,7 +20,7 @@ var TestiCarousel = React.createClass({
 
     componentDidMount: function()
     {
-        $(this.refs.testiCarouselContainer.getDOMNode()).owlCarousel({
+        $(React.findDOMNode(this.refs.testiCarouselContainer)).owlCarousel({
             items: 1,
             itemsDesktop: [1199,1],
             itemsDesktopSmall: [991,1],

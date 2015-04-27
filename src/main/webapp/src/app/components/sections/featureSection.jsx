@@ -53,8 +53,6 @@ var FeatureSection = React.createClass({
                     </div>
                     <div className="col-sm-6 col-sm-pull-6 col-md-6 col-md-pull-6">
                         {this._getFeatureImages()}
-                        {/*<img className="img-responsive first wow fadeInLeft" src="img/bg/phones1.png" alt="" data-wow-offset="300" />*/}
-                        {/*<img className="img-responsive second wow fadeInLeft" src="img/bg/phones2.png" alt="" data-wow-delay="0.5s" data-wow-offset="300" />*/}
                     </div>
                   </div>
                 </div>
@@ -68,7 +66,7 @@ var FeatureSection = React.createClass({
         return this.props.features.map(function(feature, index){
             return (
                 <div key={index} className="feature-block">
-                    <i className={"fa fa-" + feature.icon}></i>
+                    <i className={feature.icon}></i>
                     <h3>{feature.title}</h3>
                     <p>{feature.content}</p>
                 </div>

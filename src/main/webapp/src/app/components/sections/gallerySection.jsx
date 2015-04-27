@@ -1,17 +1,17 @@
 var React = require('react');
 var Carousel = require('../carousels/carousel.jsx');
 
-var GallerySection = React.createClass({
-
-    getInitialState: function()
+class GallerySection extends React.Component
+{
+    getInitialState()
     {
         return {
             message: "",
             style: ''
         };
-    },
+    }
 
-    render: function()
+    render()
     {
         return (
             <section id="gallery" className="clearfix" data-scroll-index="1">
@@ -45,6 +45,6 @@ var GallerySection = React.createClass({
             </section>
         );
     }
-});
+}
 
 module.exports = GallerySection;

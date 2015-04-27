@@ -20,7 +20,7 @@ var Carousel = React.createClass({
 
     componentDidMount: function()
     {
-        var galleryContainer = this.refs.galleryContainer.getDOMNode();
+        var galleryContainer = React.findDOMNode(this.refs.galleryContainer);
 
         $(galleryContainer).owlCarousel({
             items: 4,
@@ -45,7 +45,7 @@ var Carousel = React.createClass({
     render: function()
     {
         return (
-            <div ref="galleryContainer" id={this.props.id} className="owl-carousel">
+            <div ref="galleryContainer" className="owl-carousel">
                 {this._getImageElements()}
             </div>
         );
@@ -53,9 +53,9 @@ var Carousel = React.createClass({
 
     _getImageElements: function()
     {
-        return this.props.images.map(function(image, index){
+        return this.props.images.map(function(image, index) {
             return (
-                <div key={index} className="wow fadeIn" data-wow-delay="1.5s" data-wow-offset="300">
+                <div key={index} className="wow fadeIn" data-wow-delay={(index * 0.13) + "s"} data-wow-offset="300">
                     <div className="ico"><i className="fa fa-search"></i></div>
                     <a href={this.props.baseDir + image} title="">
                         <img className="img-responsive" src={this.props.baseDir + image} alt="" />

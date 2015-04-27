@@ -48,7 +48,7 @@ var TopMenu = React.createClass({
             
             return (
                 <li key={index} className={(item.hightlighted) ? 'download-btn' : ''}>
-                    <a data-scroll-nav={item.section} title="">{item.text} {icon}</a>
+                    <a href={item.url} data-scroll-nav={item.section} title="">{item.text} {icon}</a>
                 </li>
             );
         });
