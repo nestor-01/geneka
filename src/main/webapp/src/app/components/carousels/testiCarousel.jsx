@@ -32,6 +32,11 @@ var TestiCarousel = React.createClass({
             autoHeight: true
         });
     },
+    
+    componentWillUnmount: function()
+    {
+        $(React.findDOMNode(this.refs.testiCarouselContainer)).off();
+    },
 
     render: function()
     {

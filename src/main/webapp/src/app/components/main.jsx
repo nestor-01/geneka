@@ -1,47 +1,27 @@
 var React = require('react');
-var RouterMixin = require('react-mini-router').RouterMixin;
 
 var Loader = require('./loader.jsx');
-var Header = require('./header.jsx');
+//var Header = require('./header.jsx');
 var Footer = require('./footer.jsx');
-
 var Content = require('./content.jsx');
-var SignUp = require('./signup.jsx');
+var TopMenu = require('./topMenu.jsx');
+var Swiper = require('./carousels/swiper.jsx');
 
-//var Main = React.createClass({
-var Main = React.createClass({
-  
-  mixins: [RouterMixin],
-  
-  routes: {
-    '/': 'home',
-    '/signup': 'signup'
-  },
-  
-  render() {
-    return this.renderCurrentRoute();
-  },
-  
-  home() {
-    return (
-      <div>
-          <Loader />
-          <Header />
-          <Content />
-          <Footer />
-      </div>
-    );
-  },
+var Icons = require('./media/icons.jsx');
 
-  signup() {
+var Main = React.createClass(
+{
+  render()
+  {
     return (
-      <div>
-          <Header />
-          <SignUp />
-          <Footer />
-      </div>
+        <div>
+            <Loader />
+            <Content />
+            <Footer />
+        </div>
     );
-  },
+    
+  }
 });
 
 module.exports = Main;

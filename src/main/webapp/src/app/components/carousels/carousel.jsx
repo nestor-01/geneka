@@ -41,6 +41,11 @@ var Carousel = React.createClass({
             }
         });
     },
+    
+    componentWillUnmount: function()
+    {
+        $(React.findDOMNode(this.refs.galleryContainer)).off();
+    },
 
     render: function()
     {

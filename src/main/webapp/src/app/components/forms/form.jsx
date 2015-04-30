@@ -6,7 +6,7 @@ var Form = React.createClass({
     {
         id: React.PropTypes.string,
         nomethod: React.PropTypes.bool,
-        method: React.PropTypes.oneOf(['post', 'get']),
+        method: React.PropTypes.oneOf(['post', 'get', '']),
         action: React.PropTypes.string
     },
 
@@ -39,6 +39,11 @@ var Form = React.createClass({
             },
             url: options.url
         });
+    },
+    
+    componentWillUnmout: function()
+    {
+        $(this.refs.form.getDOMNode()).off();
     }
 });
 

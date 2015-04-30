@@ -39,16 +39,28 @@ var TopMenu = React.createClass({
     {
         return this.props.items.map(function(item, index)
         {
-            var icon;
+            var icon,
+                link;
             
             if(item.icon)
             {
                 icon = <i className={item.icon}></i>;
             }
             
+            if(item.section)
+            {
+                link = <a data-scroll-nav={item.section} title="" onTouchTap={item.onClick}>{item.text} {icon}</a>;
+            }
+            
+            else
+            {
+                link = <a href={item.url} title="" onTouchTap={item.onClick}>{item.text} {icon}</a>;
+            }
+            
+            
             return (
                 <li key={index} className={(item.hightlighted) ? 'download-btn' : ''}>
-                    <a href={item.url} data-scroll-nav={item.section} title="">{item.text} {icon}</a>
+                    {link}
                 </li>
             );
         });

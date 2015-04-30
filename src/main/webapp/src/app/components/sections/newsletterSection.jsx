@@ -30,6 +30,11 @@ var Newsletter = React.createClass({
             }
         });
     },
+    
+    componentWillUnmout: function()
+    {
+        $(this.refs.subscribeMessage.getDOMNode()).off();
+    },
 
     render: function()
     {

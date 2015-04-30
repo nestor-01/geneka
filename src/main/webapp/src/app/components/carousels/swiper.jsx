@@ -18,6 +18,15 @@ var Swiper = React.createClass({
 
     componentDidMount: function()
     {
+        // Phone Slider Function
+        var getSlide = function() {
+            var wW = $(window).width();
+            if (wW < 601) {
+                return 1;
+            }
+            return 3;
+        };
+        
         // Phone Carousel
         var mySwiper = $('.swiper-container').swiper({
 
@@ -36,7 +45,6 @@ var Swiper = React.createClass({
                 modifier: 1,
                 slideShadows: false
             }
-
         });
 
         // Set number of slide based on device width
@@ -50,11 +58,17 @@ var Swiper = React.createClass({
             mySwiper.reInit();
         });
     },
+    
+    componentWillUnmount: function()
+    {
+        $('.swiper-container').off();
+        $(window).off();
+    },
 
     render: function()
     {
         return (
-            <div className="swiper-container wow fadeIn" data-wow-delay="1.5s">
+            <div ref="swiper-container" className="swiper-container wow fadeIn" data-wow-delay="1.5s">
 
                 {/* Arrows */}
                 <a className="arrow-left" href="#" title=""><i className="fa fa-angle-left"></i></a>

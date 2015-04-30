@@ -1,7 +1,7 @@
 var React = require('react');
 var Carousel = require('../carousels/carousel.jsx');
 
-class GallerySection extends React.Component
+var GallerySection = React.createClass(
 {
     getInitialState()
     {
@@ -9,7 +9,7 @@ class GallerySection extends React.Component
             message: "",
             style: ''
         };
-    }
+    },
 
     render()
     {
@@ -45,6 +45,6 @@ class GallerySection extends React.Component
             </section>
         );
     }
-}
+});
 
 module.exports = GallerySection;

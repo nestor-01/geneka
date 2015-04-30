@@ -1,18 +1,40 @@
 var React = require('react');
 
 var TopMenu = require('./topMenu.jsx');
-var Swiper = require('./carousels/swiper.jsx');
 var Icons = require('./media/icons.jsx');
 
-var Header = React.createClass({
+var Router = require('react-router');
+var RouteHandler = Router.RouteHandler;
 
-    render: function()
+var Header = React.createClass({
+    
+    getInitialState()
+    {
+      return{
+          dotColor: '#fff',
+          lineColor: '#fff',
+          size: 800
+      }  
+    },
+
+    componentDidMount()
+    {
+        //$(React.findDOMNode(this.refs.refParticlesSystem)).particleground(this.state);
+    },
+    
+    componentWillUpdate()
+    {
+        //$('.pg-canvas').attr('height', this.state.size);
+    },
+
+    render()
     {
         return (
-            <header>
+            <div style={{position: 'absolute', top: '0', height: '200px', width: '100%', backgroundColor: 'rgba(255, 255, 255, 0)'}}>
+            <header style={{backgroundColor: 'rgba(255, 255, 255, 0)'}}>
 
                 {/* Intro */}
-                <div id="intro" className="overlay-gradient" data-scroll-index="0">
+                <div id="intro" data-scroll-index="0" style={{backgroundColor: 'rgba(255, 255, 255, 0)'}}>
 
                     {/* Top Bar */}
                     <div className="top-bar">
@@ -27,9 +49,12 @@ var Header = React.createClass({
 
                                     <TopMenu items={[
                                         {
-                                            section: "0",
-                                            url: "/",
-                                            text: "Inicio"
+                                            url: "/#/",
+                                            text: "Inicio",
+                                            onClick: function()
+                                            {
+                                                this.setState({size: 800});
+                                            }.bind(this)
                                         },
                                         {
                                             section: "1",
@@ -44,35 +69,23 @@ var Header = React.createClass({
                                             text: "Contacto"
                                         },
                                         {
-                                            section: "4",
                                             text: "Ingresar",
-                                            url: "signup",
+                                            url: "#/signin",
                                             hightlighted: true,
-                                            icon: Icons.user
+                                            icon: Icons.user,
+                                            onClick: function()
+                                            {
+                                                //this.setState({size: $(window).height()});
+                                            }.bind(this)
                                         }
                                     ]} />
                                 </div>
                             </div>
                         </div>
                     </div> {/* Top Bar End */}
-
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-
-                                {/* Intro Heading */}
-                                <div className="headline">
-                                    <h1 className="wow fadeInDown">¡TODO LO QUE QUIERES EN UN SOLO SITIO!</h1>
-                                    <p className="wow fadeInDown" data-wow-delay="0.5s">Lo último en tecnología, repuestos importados de la mejor calidad</p>
-                                </div>
-                                {/* Intro Heading End */}
-
-                                <Swiper baseDir="img/bg/" images={["phone1.png", "phone2.png", "phone3.png"]} />
-                            </div>
-                        </div>
-                    </div>
                 </div> {/* Intro End */}
             </header>
+            </div>
         );
     }
 });
