@@ -48,7 +48,7 @@ var Particles = React.createClass({
     getInitialState()
     {
       return{
-        height: $(window).height()
+        height: '150px'
       };
     },
     
@@ -66,7 +66,7 @@ var Particles = React.createClass({
     {
         $(React.findDOMNode(this.refs.refParticlesSystem)).particleground(this.props);
         
-        $(window).on('resize', function(){
+        /*$(window).on('resize', function(){
           
           var height;
           
@@ -83,13 +83,13 @@ var Particles = React.createClass({
           this.setState({
             height: $(document).height()
           })
-        }.bind(this));
+        }.bind(this));*/
     },
     
     render()
     {
       return (
-        <div className="overlay-gradient" ref="refParticlesSystem" style={{height: this.state.height, width: '100%'}}></div>
+        <div className="overlay-gradient hidden-xs" ref="refParticlesSystem" style={{height: this.state.height, width: '100%'}}></div>
       );
     },
     

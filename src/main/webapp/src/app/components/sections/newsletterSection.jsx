@@ -40,7 +40,7 @@ var Newsletter = React.createClass({
     {
         return (
             <section id="newsletter" className="clearfix newsletter-background" data-scroll-index="2">
-                <div className="newsletter overlay-gradient">
+                <div className="newsletter overlay-gradient2">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-8 col-md-offset-2">

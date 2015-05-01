@@ -51,15 +51,21 @@ var SignUp = React.createClass({
   render()
   {
     return (
-      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 loginFormContainer" style={{top: '150px'}}>
-        <div className="loginForm col-xs-12 col-sm-11 col-md-11 col-lg-10 center-block" ref="loginContainer" style={{height: '100%', float: 'none', background: 'rgba(255,255,255,'+this.state.opacity+')', opacity: this.state.opacityButton, backgroundColor: "white", borderRadius: "4px" }}>
-          <div style={{padding: '20px 20px', height: '100%'}}>
-            <h3 style={{color: 'white'}}>Autenticación</h3>
-            
+      <div>
+      <div className="hidden-xs col-sm-12 col-md-12 col-lg-12"></div>
+      <div className="hidden-xs col-sm-12 col-md-12 col-lg-12"></div>
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12" style={{padding: '40px 0 20px'}}>
+        <div className="signupForm col-xs-12 col-sm-11 col-md-11 col-lg-10 center-block" ref="signupContainer" style={{height: '100%', float: 'none', background: 'rgba(255,255,255,'+this.state.opacity+')', opacity: this.state.opacityButton, borderRadius: "4px"}}>
+          <div style={{position: 'absolute', top: '-15px', left: '0', borderRadius: '4px 4px 0 0', height: '35px', width: '100%', fontSize: '23px', color: '#45667E'}}>
+            <a href="/#/signin"><i className="fa fa-arrow-left" style={{padding: '10px 10px', float: 'left'}}></i></a>
+            <h4 style={{fontSize: '23px', padding: '0 0 3px 20px'}}>Registro</h4>
+          </div>
+          <div style={{height: '100%', paddingTop: '50px'}}>
             <div className="col-md-6">
               <form id="myform" role="form"  method="post" className="validate">
                 <div className="row">
-                  <div className="col-sm-6">
+                <br/>
+                  <div className="col-md-10">
                     <div className="input-group">
                       <input type="text" className="form-control" name="username" data-validate="required"  placeholder="Username" />
                       <div className="input-group-addon" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="It's so simple to create a tooltop for my website!" data-original-title="Digite un username valido">
@@ -91,7 +97,7 @@ var SignUp = React.createClass({
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-sm-3">
+                  <div className="col-md-3">
                     <div className="input-group">
                       <input type="text" className="form-control" name="name"data-validate="required" data-message-required="This is custom message for required field."  placeholder="Nombre" autocomplete="off" />
                       <div className="input-group-addon">
@@ -108,7 +114,7 @@ var SignUp = React.createClass({
                       </div>
                     </div>
                   </div>
-                  <div className="col-sm-3">
+                  <div className="col-md-3">
                     <div className="input-group">
                       <input type="text" className="form-control" name="apellido"data-validate="required" data-message-required="This is custom message for required field."  placeholder="Apellido" autocomplete="off" />
                       <div className="input-group-addon">
@@ -132,7 +138,7 @@ var SignUp = React.createClass({
                 </div>
                 <br />
                 <div className="form-group text-right ">
-                  <button type="submit" className="btn btn-default" name="registrarse">Registrarse</button>
+                  <button type="submit" className="btn btn-success" name="registrarse">Registrarse</button>
                 </div>
               </form>
             </div>
@@ -144,7 +150,7 @@ var SignUp = React.createClass({
           </div>
           <div style={{clear: 'both'}}></div>
         </div>
-        <br/>
+      </div>
       </div>
     );
   }
