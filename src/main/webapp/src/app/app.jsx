@@ -19,28 +19,33 @@ var React = require('react'),
     
 var App = React.createClass({
   
-  render: function ()
+  render()
   {
     return (
       <div>
         <Loader />
         <Particles />
-        <Header />
-        <RouteHandler/>
+        <Header onSelectMenu={this._onSelectMenuHeader} />
+        <RouteHandler />
       </div>
     );
+  },
+  
+  _onSelectMenuHeader(item)
+  {
+    
   }
   
 });
 
 var routes = (
   <Route name="home" path="/" handler={App}>
-    <Route name="signin" path="/signin" handler={SignIn} />
+    <Route name="signin" path="/signin" handler={SignIn} onEnter={function(){alert('entrando a login');}} />
     <Route name="signup" path="/signup" handler={SignUp} />
     <DefaultRoute handler={Content}/>
   </Route>
 );
 
-Router.run(routes, function (Handler) {
+Router.run(routes, Router.HistoryLocation, function (Handler) {
   React.render(<Handler/>, document.body);
 });

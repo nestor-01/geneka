@@ -137,13 +137,13 @@ var SignUp = React.createClass({
                   </label>
                 </div>
                 <br />
-                <div className="form-group text-right ">
+                <div className="form-group text-left">
                   <button type="submit" className="btn btn-success" name="registrarse">Registrarse</button>
                 </div>
               </form>
             </div>
             <div className="col-md-6" style={{height: 'calc(100vh - 338px)'}}>
-              <div className="col-md-12" style={{height: '100%', backgroundColor: 'rgba(255,255,255,0.5)', borderRadius: '4px', boxShadow: '2px 2px 5px 1px #45667E', padding: '5px'}}>
+              <div className="col-md-12" style={{height: '100%', backgroundColor: 'rgba(255,255,255,0.5)', borderRadius: '4px', boxShadow: '0px 1px 5px 1px #45667E', padding: '5px'}}>
                 <div id="map-canvas" className="col-md-12" style={{height: '100%', borderRadius: '4px'}}></div>
               </div>
             </div>
