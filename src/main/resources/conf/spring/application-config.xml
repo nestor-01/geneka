@@ -82,9 +82,10 @@
 <!-- 		<constructor-arg name="databaseName" value="test" /> -->
 <!-- 	</bean> -->
 
-	<!-- Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes -->
-<!-- 	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" /> -->
-
+	<!-- Use this post processor to translate any MongoExceptions thrown in 
+		@Repository annotated classes -->
+	<!-- <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" 
+		/> -->
 
 
 </beans>

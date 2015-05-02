@@ -1,5 +1,6 @@
 package com.geneka.user.bs;
 
+
 import java.util.List;
 
 import com.geneka.model.User;
@@ -18,6 +19,5 @@ public interface UserService {
 			String phone, Integer groupId, String dateOfBirth)throws Exception;
 	
 	public boolean deleteUser(Integer userId)throws Exception;
-	
 	
 }
