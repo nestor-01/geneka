@@ -73,7 +73,7 @@ var SignIn = React.createClass({
         </div>
         <br/>
         <div className="transition" style={{textAlign: 'center', opacity: this.state.opacityButton}}>
-          <a href="/#/signup" style={{color: 'white', fontWeight: '500', fontSize: '12px'}}>{"¿No tienes una cuenta?"}</a>
+          <a href="#/signup" style={{color: 'white', fontWeight: '500', fontSize: '12px'}}>{"¿No tienes una cuenta?"}</a>
         </div>
       </div>
     );
