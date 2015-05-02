@@ -1,5 +1,6 @@
 var React = require('react');
 var Authenticated = require('../authenticated.jsx');
+var MapContainer = require('./map.jsx');
 
 var SignUp = React.createClass({
 
@@ -37,18 +38,10 @@ var SignUp = React.createClass({
         opacityButton: 1
       });
     }.bind(this),380);
+
+    //this.setUpMap();
     
-    var map;
-      var latlng = new google.maps.LatLng(-34.397, 150.644);
-      var mapOptions = {
-        zoom: 8,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      
-      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    
-    //React.findDOMNode(this.refs.userTextfield).focus();
+    React.findDOMNode(this.refs.name).focus();
   },
   
   render()
@@ -67,88 +60,134 @@ var SignUp = React.createClass({
             <div className="col-md-6">
               <form id="myform" role="form"  method="post" className="validate">
                 <div className="row">
+                  <div className="col-md-6">
+                    <div className="input-group">
+                      <input ref="name" type="text" className="form-control" name="name" data-validate="required" data-message-required="This is custom message for required field."  placeholder="Nombre" autoComplete="off" />
+                      <div className="input-group-addon">
+                        <i className="entypo-user"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="input-group">
+                      <input type="text" className="form-control" name="lastname"data-validate="required" data-message-required="This is custom message for required field."  placeholder="Apellidos" autoComplete="off" />
+                      <div className="input-group-addon">
+                        <i className="entypo-user"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <br/>
-                  <div className="col-md-10">
+                <div className="row">
+                  <div className="col-md-9">
+                    <div className="input-group">
+                      <input type="email" className="form-control" name="email" data-validate="required" data-message-required="This is custom message for required field."  placeholder="Email" />
+                      <span className="input-group-addon" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right">
+                        <i className="entypo-mail"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <div className="input-group">
+                      <select className="form-control" name="email" data-validate="required" data-message-required="This is custom message for required field." placeholder="Gender">
+                        <option>M</option>
+                        <option>F</option>
+                      </select>
+                      <span className="input-group-addon" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right">
+                        <i className="entypo-users"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <br/>
+                <div className="row">
+                  <div className="col-md-8">
+                    <div className="input-group">
+                      <input ref="address" type="text" className="form-control" name="address"data-validate="required" data-message-required="This is custom message for required field."  placeholder="Dirección" autoComplete="off" />
+                      <div className="input-group-addon">
+                        <i className="entypo-user"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <div className="input-group">
+                      <input type="text" className="form-control" name="phone"data-validate="required" data-message-required="This is custom message for required field."  placeholder="Teléfono" autoComplete="off" />
+                      <div className="input-group-addon">
+                        <i className="entypo-user"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br/>
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="input-group">
+                      <input type="date" className="form-control datepicker" name="birthdate" data-format="dd MM yyyy" name="fechanacimiento"data-validate="required" data-message-required="This is custom message for required field." placeholder="Fecha de nacimiento"/>
+                      <div className="input-group-addon">
+                        <i className="entypo-user"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="input-group">
+                      <input type="text" className="form-control" name="groupId"data-validate="required" data-message-required="This is custom message for required field."  placeholder="Group ID" value="1" autoComplete="off" />
+                      <div className="input-group-addon">
+                        <i className="entypo-user"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br/>
+                <br/>
+                <div className="row">
+                  <div className="col-md-12">
                     <div className="input-group">
                       <input type="text" className="form-control" name="username" data-validate="required"  placeholder="Username" />
                       <div className="input-group-addon" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="It's so simple to create a tooltop for my website!" data-original-title="Digite un username valido">
                         <i className="entypo-user"></i>
                       </div>
                     </div>
-                    <br />
-                    <div className="input-group">
-                      <input type="email" className="form-control" name="email" data-validate="required" data-message-required="This is custom message for required field."  placeholder="Email" />
-                      <span className="input-group-addon" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right">
-                        <i className="entypo-mail"></i>
-                      </span>
-                    </div>        
-                    <br />
+                  </div>
+                </div>
+                <br />
+                <div className="row">
+                  <div className="col-md-6">
                     <div className="input-group">
                       <input type="password" className="form-control" id="password" name="password" data-validate="required" data-message-required="This is custom message for required field." placeholder="Contraseña"/>
                       <span className="input-group-addon">
                         <i className="entypo-lock"></i>
                       </span>
                     </div>
-                    <br />
+                  </div>
+                  <div className="col-md-6">
                     <div className="input-group">
                       <input type="password" className="form-control" id="password_again" name="password_again" data-validate="equalTo[#password]"placeholder="Confirmar Contraseña" />
                       <span className="input-group-addon">
                         <i className="entypo-lock"></i>
                       </span>
                     </div>
-                    <br />
                   </div>
                 </div>
+                <br/>
+                <br/>
                 <div className="row">
-                  <div className="col-md-3">
-                    <div className="input-group">
-                      <input type="text" className="form-control" name="name"data-validate="required" data-message-required="This is custom message for required field."  placeholder="Nombre" autocomplete="off" />
-                      <div className="input-group-addon">
-                        <i className="entypo-user"></i>
-                      </div>
-                    </div>
-                    <br />
-                    <div className="input-group">
-                      <input type="date" className="form-control datepicker" data-format="dd MM yyyy" name="fechanacimiento"data-validate="required" data-message-required="This is custom message for required field." placeholder="Fecha de nacimiento"/>
-                      <div className="input-group-addon">
-                        <a href="#">
-                          <i className="entypo-calendar"></i>
-                        </a>
-                      </div>
+                  <div className="col-md-6">
+                    <div className="checkbox">
+                      <label>
+                        <input type="checkbox">Deseo recibir noticias y ofertas especiales</input>
+                      </label>
                     </div>
                   </div>
-                  <div className="col-md-3">
-                    <div className="input-group">
-                      <input type="text" className="form-control" name="apellido"data-validate="required" data-message-required="This is custom message for required field."  placeholder="Apellido" autocomplete="off" />
-                      <div className="input-group-addon">
-                        <i className="entypo-user"></i>
-                      </div>
+                  <div className="col-md-6">
+                    <div className="form-group pull-right">
+                      <button type="submit" className="btn btn-success" name="registrarse">Registrarse</button>
                     </div>
-                    <br />
-                    <div className="input-group">       
-                      <input type="text" className="form-control" name="phone" data-validate="required" data-message-required="This is custom message for required field."  placeholder="Telefono" data-mask="phone" autocomplete="off" />
-                      <div className="input-group-addon">
-                        <i className="entypo-phone"></i>
-                      </div>
-                    </div>
-                  </div>  
-                </div>
-                <br />
-                <div className="checkbox">
-                  <label>
-                    <input type="checkbox">Deseo recibir noticias y ofertas especiales</input>
-                  </label>
-                </div>
-                <br />
-                <div className="form-group text-left">
-                  <button type="submit" className="btn btn-success" name="registrarse">Registrarse</button>
+                  </div>
                 </div>
               </form>
             </div>
-            <div className="col-md-6" style={{height: 'calc(100vh - 338px)'}}>
-              <div className="col-md-12" style={{height: '100%', backgroundColor: 'rgba(255,255,255,0.5)', borderRadius: '4px', boxShadow: '0px 1px 5px 1px #45667E', padding: '5px'}}>
-                <div id="map-canvas" className="col-md-12" style={{height: '100%', borderRadius: '4px'}}></div>
-              </div>
+            <div className="col-md-6 pull-right" style={{height: 'calc(100vh - 338px)'}}>
+              <MapContainer onLoadAddress={this._onLoadAddress} />
             </div>
           </div>
           <div style={{clear: 'both'}}></div>
@@ -156,6 +195,11 @@ var SignUp = React.createClass({
       </div>
       </div>
     );
+  },
+
+  _onLoadAddress(address)
+  {
+    $(React.findDOMNode(this.refs.address)).val(address);
   }
 });
 
