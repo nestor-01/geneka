@@ -1,7 +1,8 @@
 var React = require('react');
+var Authenticated = require('../authenticated.jsx');
 
 var SignUp = React.createClass({
-  
+
   getInitialState()
   {
     var _height = $(window).height() - 150;
@@ -25,6 +26,8 @@ var SignUp = React.createClass({
   
   componentDidMount()
   {
+    this.props.onInit('signup');
+
     this.setState({
       opacity: .3
     });

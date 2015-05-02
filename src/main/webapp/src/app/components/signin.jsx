@@ -1,9 +1,10 @@
 var React = require('react');
 var TextField = require('./forms/textfield.jsx');
 var Label = require('./forms/label.jsx');
+var Authenticated = require('../authenticated.jsx');
 
 var SignIn = React.createClass({
-  
+
   getInitialState()
   {
     var _height = 350;
@@ -27,6 +28,8 @@ var SignIn = React.createClass({
   
   componentDidMount()
   {
+    this.props.onInit('signin');
+
     this.setState({
       opacity: .3
     });
@@ -70,7 +73,7 @@ var SignIn = React.createClass({
         </div>
         <br/>
         <div className="transition" style={{textAlign: 'center', opacity: this.state.opacityButton}}>
-          <a href="/#/signup" style={{color: 'white', fontWeight: '500', fontSize: '12px'}}>¿No tienes una cuenta?</a>
+          <a href="/#/signup" style={{color: 'white', fontWeight: '500', fontSize: '12px'}}>{"¿No tienes una cuenta?"}</a>
         </div>
       </div>
     );

@@ -12,7 +12,8 @@ var Content = React.createClass({
 
     componentDidMount()
     {
-      $('body').css('overflow', 'auto');  
+      $('body').css('overflow', 'auto');
+      this.props.onInit('app');
     },
 
     render: function()

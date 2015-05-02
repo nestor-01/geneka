@@ -11,6 +11,7 @@ var React = require('react'),
     Header = require('./components/header.jsx'),
     Content = require('./components/content.jsx'),
     Particles = require('./components/miscellaneous/particles.jsx'),
+    Authenticated = require('./authenticated.jsx'),
     
     Router = require('react-router'),
     DefaultRoute = Router.DefaultRoute,
@@ -18,34 +19,42 @@ var React = require('react'),
     RouteHandler = Router.RouteHandler;
     
 var App = React.createClass({
-  
+
   render()
   {
     return (
       <div>
         <Loader />
-        <Particles />
-        <Header onSelectMenu={this._onSelectMenuHeader} />
-        <RouteHandler />
+        <Particles ref="particlesEffect" />
+        <Header />
+        <RouteHandler onInit={this._onChangeView} />
       </div>
     );
   },
-  
-  _onSelectMenuHeader(item)
+
+  _onChangeView(item)
   {
-    
+    if(this.refs.particlesEffect) {
+      this.refs.particlesEffect.pause();
+
+      if (item === "signin") {
+        this.refs.particlesEffect.setSize($(window).height() + 'px');
+      }
+      else {
+        this.refs.particlesEffect.setSize('150px');
+      }
+    }
   }
-  
 });
 
 var routes = (
   <Route name="home" path="/" handler={App}>
-    <Route name="signin" path="/signin" handler={SignIn} onEnter={function(){alert('entrando a login');}} />
-    <Route name="signup" path="/signup" handler={SignUp} />
-    <DefaultRoute handler={Content}/>
+    <Route name="signin" handler={SignIn} />
+    <Route name="signup" handler={SignUp} />
+    <DefaultRoute handler={Content} />
   </Route>
 );
 
-Router.run(routes, Router.HistoryLocation, function (Handler) {
-  React.render(<Handler/>, document.body);
+Router.run(routes, function (Handler) {
+  React.render(<Handler />, document.body);
 });

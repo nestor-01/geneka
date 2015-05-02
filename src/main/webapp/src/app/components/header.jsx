@@ -8,6 +8,10 @@ var RouteHandler = Router.RouteHandler;
 
 var Header = React.createClass({
 
+    propTypes: {
+        onSelectMenu: React.PropTypes.func
+    },
+
     render()
     {
         return (
@@ -32,9 +36,9 @@ var Header = React.createClass({
                                             {
                                                 url: "/#/",
                                                 text: "Inicio",
-                                                onClick: function()
+                                                onClick: function(e)
                                                 {
-                                                    
+                                                    //this.props.onSelectMenu(e, this);
                                                 }.bind(this)
                                             },
                                             {
@@ -54,9 +58,9 @@ var Header = React.createClass({
                                                 url: "#/signin",
                                                 hightlighted: true,
                                                 icon: Icons.user,
-                                                onClick: function()
+                                                onClick: function(e)
                                                 {
-                                                    
+                                                    //this.props.onSelectMenu(e, "ingresar");
                                                 }.bind(this)
                                             }
                                         ]} />

@@ -52,60 +52,47 @@ var Particles = React.createClass({
       };
     },
     
-    setElement(element)
-    {
-      this.element = element;
-    },
-
-    init()
-    {
-      $(React.findDOMNode(this.element)).particleground(this.props);
-    },
-    
     componentDidMount()
     {
+      $(React.findDOMNode(this.refs.refParticlesSystem)).particleground(this.props);
+    },
+
+    componentDidUpdate()
+    {
+      var startTimer = setTimeout(function(){
         $(React.findDOMNode(this.refs.refParticlesSystem)).particleground(this.props);
-        
-        /*$(window).on('resize', function(){
-          
-          var height;
-          
-          if($(document).height() > $(window).height())
-          {
-            height = $(document).height();
-          }
-          
-          else
-          {
-            var height = '100vh';
-          }
-          
-          this.setState({
-            height: $(document).height()
-          })
-        }.bind(this));*/
+      }.bind(this), 800);
     },
     
     render()
     {
       return (
-        <div className="overlay-gradient hidden-xs" ref="refParticlesSystem" style={{height: this.state.height, width: '100%'}}></div>
+        <div id="refParticlesSystem" className="overlay-gradient hidden-xs" ref="refParticlesSystem" style={{height: this.state.height, width: '100%'}}></div>
       );
+    },
+
+    setSize(size)
+    {
+      this.destroy();
+
+      this.setState({
+        height: size
+      });
     },
     
     pause()
     {
-      $(React.findDOMNode(this.element)).particlegound('pause');
+        $(React.findDOMNode(this.refs.refParticlesSystem)).particleground('pause');
     },
     
     start()
     {
-      $(React.findDOMNode(this.element)).particlegound('start');
+        $(React.findDOMNode(this.refs.refParticlesSystem)).particleground('start');
     },
     
     destroy()
     {
-      $(React.findDOMNode(this.element)).particlegound('destroy');
+        $(React.findDOMNode(this.refs.refParticlesSystem)).particleground('destroy');
     }
 });
 
