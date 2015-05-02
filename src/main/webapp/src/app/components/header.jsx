@@ -34,7 +34,7 @@ var Header = React.createClass({
     
                                         <TopMenu items={[
                                             {
-                                                url: "/#/",
+                                                url: "#/",
                                                 text: "Inicio",
                                                 onClick: function(e)
                                                 {
