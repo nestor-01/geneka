@@ -1,89 +1,64 @@
 package com.geneka.model;
-
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-
 
 /**
  * The persistent class for the user database table.
  * 
  */
 @Entity
-@Table(name="user")
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@Table(name = "user")
+@NamedQueries({ @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u") })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_user", unique=true, nullable=false)
-	private int idUser;
-
-	@Column(length=255)
-	private String address;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", unique = true, nullable = false)
+	private Integer id;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="date_of_birth")
+	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
 
-	@Column(length=255)
+	@Column(name = "email", length = 255)
 	private String email;
 
-	@Column(name="frecuency_of_use", length=15)
+	@Column(name = "frecuency_of_use", length = 15)
 	private String frecuencyOfUse;
 
-	@Column(length=255)
+	@Column(name = "gender", length = 255)
 	private String gender;
 
-	@Column(name="last_name", length=255)
+	@Column(name = "last_name", length = 255)
 	private String lastName;
 
-	@Column(length=255)
+	@Column(name = "name")
 	private String name;
 
-	@Column(nullable=false, length=255)
+	@Column(name = "password")
 	private String password;
 
-	private int phone;
+	@Column(name = "phone")
+	private String phone;
 
-	@Column(name="status_user")
-	private byte statusUser;
+	@Column(name = "status_user")
+	private Integer statusUser;
 
-	@Column(nullable=false, length=255)
-	private String username;
-
-	//bi-directional many-to-one association to Feedback
-	@OneToMany(mappedBy="user")
-	private List<Feedback> feedbacks;
-
-	//bi-directional many-to-one association to Localization
-	@OneToMany(mappedBy="user")
-	private List<Localization> localizations;
-
-	//bi-directional many-to-one association to Group
-	@ManyToOne
-	@JoinColumn(name="group_id_group", nullable=false)
-	private Group group;
+	@Column(name = "group_id")
+	private Integer groupId;
 
 	public User() {
 	}
 
-	public int getIdUser() {
-		return this.idUser;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
-	}
-
-	public String getAddress() {
-		return this.address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Date getDateOfBirth() {
@@ -142,80 +117,28 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public int getPhone() {
-		return this.phone;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-	public byte getStatusUser() {
-		return this.statusUser;
+	public Integer getStatusUser() {
+		return statusUser;
 	}
 
-	public void setStatusUser(byte statusUser) {
+	public void setStatusUser(Integer statusUser) {
 		this.statusUser = statusUser;
 	}
 
-	public String getUsername() {
-		return this.username;
+	public Integer getGroupId() {
+		return this.groupId;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public List<Feedback> getFeedbacks() {
-		return this.feedbacks;
-	}
-
-	public void setFeedbacks(List<Feedback> feedbacks) {
-		this.feedbacks = feedbacks;
-	}
-
-	public Feedback addFeedback(Feedback feedback) {
-		getFeedbacks().add(feedback);
-		feedback.setUser(this);
-
-		return feedback;
-	}
-
-	public Feedback removeFeedback(Feedback feedback) {
-		getFeedbacks().remove(feedback);
-		feedback.setUser(null);
-
-		return feedback;
-	}
-
-	public List<Localization> getLocalizations() {
-		return this.localizations;
-	}
-
-	public void setLocalizations(List<Localization> localizations) {
-		this.localizations = localizations;
-	}
-
-	public Localization addLocalization(Localization localization) {
-		getLocalizations().add(localization);
-		localization.setUser(this);
-
-		return localization;
-	}
-
-	public Localization removeLocalization(Localization localization) {
-		getLocalizations().remove(localization);
-		localization.setUser(null);
-
-		return localization;
-	}
-
-	public Group getGroup() {
-		return this.group;
-	}
-
-	public void setGroup(Group group) {
-		this.group = group;
+	public void setGroupId(Integer groupId) {
+		this.groupId = groupId;
 	}
 
 }

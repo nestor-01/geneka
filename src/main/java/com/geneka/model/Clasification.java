@@ -1,7 +1,9 @@
 package com.geneka.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -11,14 +13,17 @@ import java.util.List;
  */
 @Entity
 @Table(name="clasification")
-@NamedQuery(name="Clasification.findAll", query="SELECT c FROM Clasification c")
+@NamedQueries(
+		{
+		@NamedQuery(name="Clasification.findAll", query="SELECT c FROM Clasification c")
+		})
 public class Clasification implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_clasification", unique=true, nullable=false)
-	private int idClasification;
+	@Column(name="id", unique=true, nullable=false)
+	private Integer id;
 
 	@Lob
 	private String description;
@@ -26,19 +31,15 @@ public class Clasification implements Serializable {
 	@Column(length=255)
 	private String name;
 
-	//bi-directional many-to-one association to Feedback
-	@OneToMany(mappedBy="clasification")
-	private List<Feedback> feedbacks;
-
 	public Clasification() {
 	}
 
-	public int getIdClasification() {
-		return this.idClasification;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdClasification(int idClasification) {
-		this.idClasification = idClasification;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getDescription() {
@@ -55,28 +56,6 @@ public class Clasification implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Feedback> getFeedbacks() {
-		return this.feedbacks;
-	}
-
-	public void setFeedbacks(List<Feedback> feedbacks) {
-		this.feedbacks = feedbacks;
-	}
-
-	public Feedback addFeedback(Feedback feedback) {
-		getFeedbacks().add(feedback);
-		feedback.setClasification(this);
-
-		return feedback;
-	}
-
-	public Feedback removeFeedback(Feedback feedback) {
-		getFeedbacks().remove(feedback);
-		feedback.setClasification(null);
-
-		return feedback;
 	}
 
 }

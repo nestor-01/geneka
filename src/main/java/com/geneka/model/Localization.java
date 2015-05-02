@@ -1,6 +1,7 @@
 package com.geneka.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -10,14 +11,17 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="localization")
-@NamedQuery(name="Localization.findAll", query="SELECT l FROM Localization l")
+@NamedQueries(
+		{
+		@NamedQuery(name="Localization.findAll", query="SELECT l FROM Localization l")
+		})
 public class Localization implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_localization", unique=true, nullable=false)
-	private int idLocalization;
+	@Column(name="id", unique=true, nullable=false)
+	private Integer id;
 
 	@Column(length=255)
 	private String altitude;
@@ -25,20 +29,29 @@ public class Localization implements Serializable {
 	@Column(length=255)
 	private String length;
 
-	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="user_id_user", nullable=false)
-	private User user;
+	@Column(name="user_id", nullable=false)
+	private Integer userId;
+	
+	@Column(name="address")
+	private String address;
 
 	public Localization() {
 	}
-
-	public int getIdLocalization() {
-		return this.idLocalization;
+		
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdLocalization(int idLocalization) {
-		this.idLocalization = idLocalization;
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public String getAltitude() {
@@ -57,12 +70,12 @@ public class Localization implements Serializable {
 		this.length = length;
 	}
 
-	public User getUser() {
-		return this.user;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.geneka.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -10,37 +11,52 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="feedback")
-@NamedQuery(name="Feedback.findAll", query="SELECT f FROM Feedback f")
+@NamedQueries(
+		{
+		@NamedQuery(name="Feedback.findAll", query="SELECT f FROM Feedback f")
+		})
 public class Feedback implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_feedback", unique=true, nullable=false)
-	private int idFeedback;
+	@Column(name="id", unique=true, nullable=false)
+	private Integer id;
 
 	@Lob
 	private String comment;
 
-	//bi-directional many-to-one association to Clasification
-	@ManyToOne
-	@JoinColumn(name="clasification_id_clasification", nullable=false)
-	private Clasification clasification;
+	@Column(name="clasification_id")
+	private Integer clasificationId;
 
-	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="user_id_user", nullable=false)
-	private User user;
+	@Column(name="user_id", nullable=false)
+	private Integer userId;
 
 	public Feedback() {
 	}
 
-	public int getIdFeedback() {
-		return this.idFeedback;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdFeedback(int idFeedback) {
-		this.idFeedback = idFeedback;
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getClasificationId() {
+		return clasificationId;
+	}
+
+	public void setClasificationId(Integer clasificationId) {
+		this.clasificationId = clasificationId;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public String getComment() {
@@ -49,22 +65,6 @@ public class Feedback implements Serializable {
 
 	public void setComment(String comment) {
 		this.comment = comment;
-	}
-
-	public Clasification getClasification() {
-		return this.clasification;
-	}
-
-	public void setClasification(Clasification clasification) {
-		this.clasification = clasification;
-	}
-
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 }
