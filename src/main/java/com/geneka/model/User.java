@@ -1,4 +1,5 @@
 package com.geneka.model;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
@@ -10,7 +11,11 @@ import java.util.List;
  */
 @Entity
 @Table(name = "user")
-@NamedQueries({ @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u") })
+@NamedQueries(
+		{
+			@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
+			@NamedQuery(name = "User.findByEmail", query ="SELECT u FROM User u where u.email like :aemail")
+		})
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 

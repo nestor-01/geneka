@@ -3,7 +3,9 @@ package com.geneka.user.bs;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.aspectj.apache.bcel.generic.RET;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,6 +84,7 @@ public class UserServiceImpl implements UserService
 			user.setGroupId(groupId);
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
 			user.setDateOfBirth(dateOfBirth == null?null:formatter.parse(dateOfBirth));
+			user.setStatusUser(1);
 			dao.save(user);
 		}catch(Exception e)
 		{
@@ -106,6 +109,18 @@ public class UserServiceImpl implements UserService
 			
 		}
 		return true;
+	}
+
+	@Override
+	public Boolean loginUser(String email, String password) throws Exception {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("aemail", email);
+		User user = dao.getEntityByNamedQuery(User.class, "User.findByEmail", parameters);
+		if(user.getPassword().equals(password))
+		{
+			return true;
+		}
+		return false;
 	}
 
 }

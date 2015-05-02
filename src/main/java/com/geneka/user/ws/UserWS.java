@@ -95,5 +95,24 @@ public class UserWS {
 		return "ok";
 	}
 	
+	@RequestMapping(value = "/loginUser", method = RequestMethod.POST)
+	public @ResponseBody String loginUser(@RequestBody String paramsUser)
+	{
+		Map<String, Object> attributesDef = new DefaultContextImpl();
+		try
+		{
+			HashMap attributes = Tools.deserializeFromJSon(paramsUser, HashMap.class);
+			attributesDef.putAll(attributes);
+			String email = (String) attributesDef.get("email");
+			String password = (String) attributesDef.get("password");
+			return userService.loginUser(email, password).toString();
+		}
+		catch (Exception e)
+		{
+			return e.getCause().toString();
+		}
+	}
+	
+	
 
 }
