@@ -22,8 +22,8 @@ public class Module implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_module", unique=true, nullable=false)
-	private int idModule;
+	@Column(name="id", unique=true, nullable=false)
+	private Integer id;
 
 	@Column(length=255)
 	private String name;
@@ -37,13 +37,13 @@ public class Module implements Serializable {
 	
 	public Module() {
 	}
-
-	public int getIdModule() {
-		return this.idModule;
+	
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdModule(int idModule) {
-		this.idModule = idModule;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {

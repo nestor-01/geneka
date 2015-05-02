@@ -22,8 +22,8 @@ public class Category implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_category", unique=true, nullable=false)
-	private int idCategory;
+	@Column(name="id", unique=true, nullable=false)
+	private Integer id;
 
 	@Column(length=255)
 	private String description;
@@ -38,13 +38,13 @@ public class Category implements Serializable {
 
 	public Category() {
 	}
-
-	public int getIdCategory() {
-		return this.idCategory;
+	
+	public Integer getId() {
+		return id;
 	}
-
-	public void setIdCategory(int idCategory) {
-		this.idCategory = idCategory;
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getDescription() {

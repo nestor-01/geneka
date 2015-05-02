@@ -20,8 +20,8 @@ public class Localization implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_localization", unique=true, nullable=false)
-	private int idLocalization;
+	@Column(name="id", unique=true, nullable=false)
+	private Integer id;
 
 	@Column(length=255)
 	private String altitude;
@@ -29,18 +29,29 @@ public class Localization implements Serializable {
 	@Column(length=255)
 	private String length;
 
-	@Column(name="user_id_user", nullable=false)
-	private Integer userIdUser;
+	@Column(name="user_id", nullable=false)
+	private Integer userId;
+	
+	@Column(name="address")
+	private String address;
 
 	public Localization() {
 	}
-
-	public int getIdLocalization() {
-		return this.idLocalization;
+		
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdLocalization(int idLocalization) {
-		this.idLocalization = idLocalization;
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public String getAltitude() {
@@ -57,6 +68,14 @@ public class Localization implements Serializable {
 
 	public void setLength(String length) {
 		this.length = length;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 }

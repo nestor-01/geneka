@@ -22,8 +22,8 @@ public class Clasification implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_clasification", unique=true, nullable=false)
-	private int idClasification;
+	@Column(name="id", unique=true, nullable=false)
+	private Integer id;
 
 	@Lob
 	private String description;
@@ -34,12 +34,12 @@ public class Clasification implements Serializable {
 	public Clasification() {
 	}
 
-	public int getIdClasification() {
-		return this.idClasification;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdClasification(int idClasification) {
-		this.idClasification = idClasification;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getDescription() {

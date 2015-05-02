@@ -25,11 +25,13 @@ public class DaoImpl implements Dao{
 	
 	public <T> T save(T entity) throws Exception {
 		checkNotNull(entity, "Entity must not be null");
-
+		
         Object pk = getPrimaryKeyValue(entity);
-        checkArgument(pk instanceof Integer, "Entity Id isn't Integer");
-
-        return ((Integer)pk > 0)
+        if(pk != null)
+        {
+        	checkArgument(pk instanceof Integer, "Entity Id isn't Integer");        	
+        }        
+        return (pk != null && (Integer)pk > 0)
                ? modify(entity)
                : insert(entity);
 	}

@@ -1,5 +1,6 @@
 package com.geneka.user.bs;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserService
 		try
 		{
 			user = dao.save(user);
-			if(user.getIdUser() != null)
+			if(user.getId() != null)
 			{
 				return false;
 			}
@@ -56,8 +57,8 @@ public class UserServiceImpl implements UserService
 		return true;
 	}
 	
-	public boolean saveUser(String name, String lastName, String password,
-			String gender, String email, String address, String phone,
+	public boolean saveUser(Integer id, String name, String lastName, String password,
+			String gender, String email, String phone,
 			Integer groupId, String dateOfBirth) throws Exception 
 	{
 		try
@@ -71,19 +72,21 @@ public class UserServiceImpl implements UserService
 				throw new Exception("Egrupo no debe ser nulo");
 			}
 			User user = new User();
+			user.setId(id);
 			user.setName(name);
 			user.setLastName(lastName);
 			user.setPassword(password);
 			user.setGender(gender);
 			user.setEmail(email);
-			user.setAddress(address);
 			user.setPhone(phone);
 			user.setGroupId(groupId);
-			user.setDateOfBirth(new Date(dateOfBirth));
+			SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+			user.setDateOfBirth(dateOfBirth == null?null:formatter.parse(dateOfBirth));
 			dao.save(user);
 		}catch(Exception e)
 		{
-			throw new Exception("Error guardando el usuario");
+			e.printStackTrace();
+			throw new Exception("Error guardando el usuario ", e.getCause());
 		}
 		return false;
 	}

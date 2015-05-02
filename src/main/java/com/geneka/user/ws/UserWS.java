@@ -67,24 +67,31 @@ public class UserWS {
 	}
 	
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
-	public @ResponseBody String saveUser(@RequestBody String paramsNewUser) throws Exception
+	public @ResponseBody String saveUser(@RequestBody String paramsNewUser)
 	{
 		Map<String, Object> attributesDef = new DefaultContextImpl();
 		try
 		{
 			HashMap attributes = Tools.deserializeFromJSon(paramsNewUser, HashMap.class);
 			attributesDef.putAll(attributes);
-			//User
-			//attributesDef.get("name");
-			
+			Integer id = (Integer) attributesDef.get("id");
+			String name = (String) attributesDef.get("name");
+			String lastName = (String) attributesDef.get("lastName");
+			String password = (String) attributesDef.get("password");
+			String gender = (String) attributesDef.get("gender");
+			String email = (String) attributesDef.get("email");
+			String address = (String) attributesDef.get("address");
+			String phone = (String) attributesDef.get("phone");
+			Integer groupId = (Integer) attributesDef.get("groupId");
+			String dateOfBirth = (String) attributesDef.get("datoOfBirth");
+			userService.saveUser(id, name, lastName, password, gender, email, phone, 
+					groupId, dateOfBirth);
 		}
 		catch (Exception e)
 		{
-			
+			return e.getCause().toString();
 		}
-		
-		
-		return "";//Tools.serializeToJSon(user);
+		return "ok";
 	}
 	
 

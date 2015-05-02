@@ -14,8 +14,8 @@ public interface UserService {
 	
 	public boolean saveUser(User user)throws Exception;
 	
-	public boolean saveUser(String name, String lastName, String password, String gender, String email,
-			String address, String phone, Integer groupId, String dateOfBirth)throws Exception;
+	public boolean saveUser(Integer id, String name, String lastName, String password, String gender, String email,
+			String phone, Integer groupId, String dateOfBirth)throws Exception;
 	
 	public boolean deleteUser(Integer userId)throws Exception;
 	

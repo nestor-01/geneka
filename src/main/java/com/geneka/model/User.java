@@ -1,80 +1,64 @@
 package com.geneka.model;
-
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-
 
 /**
  * The persistent class for the user database table.
  * 
  */
 @Entity
-@Table(name="user")
-@NamedQueries(
-		{
-		@NamedQuery(name="User.findAll", query="SELECT u FROM User u")	
-		})
+@Table(name = "user")
+@NamedQueries({ @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u") })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_user", unique=true, nullable=false)
-	private Integer idUser;
-
-	@Column(name="address",length=255)
-	private String address;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", unique = true, nullable = false)
+	private Integer id;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="date_of_birth")
+	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
 
-	@Column(name="email",length=255)
+	@Column(name = "email", length = 255)
 	private String email;
 
-	@Column(name="frecuency_of_use", length=15)
+	@Column(name = "frecuency_of_use", length = 15)
 	private String frecuencyOfUse;
 
-	@Column(name="gender",length=255)
+	@Column(name = "gender", length = 255)
 	private String gender;
 
-	@Column(name="last_name", length=255)
+	@Column(name = "last_name", length = 255)
 	private String lastName;
 
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
 
-	@Column(name="password")
+	@Column(name = "password")
 	private String password;
 
-	@Column(name="phone")
+	@Column(name = "phone")
 	private String phone;
 
-	@Column(name="status_user")
+	@Column(name = "status_user")
 	private Integer statusUser;
 
-	@Column(name="group_id_group")
+	@Column(name = "group_id")
 	private Integer groupId;
 
 	public User() {
 	}
 
-	public Integer getIdUser() {
-		return idUser;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdUser(Integer idUser) {
-		this.idUser = idUser;
-	}
-
-	public String getAddress() {
-		return this.address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Date getDateOfBirth() {
@@ -140,7 +124,7 @@ public class User implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
+
 	public Integer getStatusUser() {
 		return statusUser;
 	}

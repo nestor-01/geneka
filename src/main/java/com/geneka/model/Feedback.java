@@ -20,29 +20,43 @@ public class Feedback implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_feedback", unique=true, nullable=false)
-	private int idFeedback;
+	@Column(name="id", unique=true, nullable=false)
+	private Integer id;
 
 	@Lob
 	private String comment;
 
-	@Column(name="clasification_id_clasification")
-	private Integer clasificationIdClasification;
+	@Column(name="clasification_id")
+	private Integer clasificationId;
 
-	//bi-directional many-to-one association to User
-
-	@Column(name="user_id_user", nullable=false)
-	private Integer userIdUser;
+	@Column(name="user_id", nullable=false)
+	private Integer userId;
 
 	public Feedback() {
 	}
 
-	public int getIdFeedback() {
-		return this.idFeedback;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdFeedback(int idFeedback) {
-		this.idFeedback = idFeedback;
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getClasificationId() {
+		return clasificationId;
+	}
+
+	public void setClasificationId(Integer clasificationId) {
+		this.clasificationId = clasificationId;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public String getComment() {
@@ -51,22 +65,6 @@ public class Feedback implements Serializable {
 
 	public void setComment(String comment) {
 		this.comment = comment;
-	}
-
-	public Integer getClasificationIdClasification() {
-		return clasificationIdClasification;
-	}
-
-	public void setClasificationIdClasification(Integer clasificationIdClasification) {
-		this.clasificationIdClasification = clasificationIdClasification;
-	}
-
-	public Integer getUserIdUser() {
-		return userIdUser;
-	}
-
-	public void setUserIdUser(Integer userIdUser) {
-		this.userIdUser = userIdUser;
 	}
 
 }

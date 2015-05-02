@@ -22,25 +22,32 @@ public class Group implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_group", unique=true, nullable=false)
-	private int idGroup;
+	@Column(name="id", unique=true, nullable=false)
+	private Integer id;
 
 	@Column(length=255)
 	private String name;
 
-	@Column(name="module_id_module", nullable=false)
-	private Integer moduleIdModule;
+	@Column(name="module_id", nullable=false)
+	private Integer moduleId;
 
-	
 	public Group() {
 	}
-
-	public int getIdGroup() {
-		return this.idGroup;
+	
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdGroup(int idGroup) {
-		this.idGroup = idGroup;
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getModuleId() {
+		return moduleId;
+	}
+
+	public void setModuleId(Integer moduleId) {
+		this.moduleId = moduleId;
 	}
 
 	public String getName() {
@@ -49,14 +56,6 @@ public class Group implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Integer getModuleIdModule() {
-		return moduleIdModule;
-	}
-
-	public void setModuleIdModule(Integer moduleIdModule) {
-		this.moduleIdModule = moduleIdModule;
 	}
 
 }
