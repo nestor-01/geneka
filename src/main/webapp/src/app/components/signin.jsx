@@ -102,13 +102,13 @@ var SignIn = React.createClass({
 
     if($.trim(user) != '' && $.trim(password) != '') {
       var data = {
-        user: user,
+        email: user,
         password: password
       };
 
-      $.post('api/users/validateUser', data)
+      $.post('/geneka/api/user/loginUser', data)
         .done(function (response) {
-
+          alert(response);
         })
         .fail(function (error) {
           this.setState({
