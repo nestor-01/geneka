@@ -90,7 +90,7 @@ public class UserWS {
 		}
 		catch (Exception e)
 		{
-			return e.getCause().toString();
+			e.printStackTrace();
 		}
 		return "ok";
 	}
