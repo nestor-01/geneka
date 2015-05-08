@@ -61,13 +61,13 @@ var MapContainer = React.createClass({
       }.bind(this));
     }.bind(this);
 
-    navigator.geolocation.getCurrentPosition(getAddress);
+    navigator.geolocation.getCurrentPosition(getAddress); //
   },
 
   render()
   {
     return (
-      <div className="col-md-12 pull-right" style={{height: '100%', backgroundColor: 'rgba(255,255,255,0.5)', borderRadius: '4px', boxShadow: '0px 1px 5px 1px #45667E', padding: '5px'}}>
+      <div className="col-md-12 pull-right" style={{width: '100%', height: '100%', backgroundColor: 'rgba(255,255,255,0.5)', borderRadius: '4px', boxShadow: '0px 1px 5px 1px #45667E', padding: '5px'}}>
         <div className="col-md-12" style={{padding: 0}}>
           <input ref="addressMap" style={{border: 'none'}} type="text" className="form-control" name="addressMap" data-validate="required"  placeholder="Dirección" />
         </div>

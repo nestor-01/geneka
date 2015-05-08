@@ -189,7 +189,7 @@ var SignUp = React.createClass({
                   </div>
                 </form>
               </div>
-              <div className="col-md-6 pull-right" style={{height: 'calc(100vh - 338px)'}}>
+              <div className="col-xs-12 col-md-6 pull-right" style={{height: 'calc(100vh - 338px)'}}>
                 <MapContainer onLoadAddress={this._onLoadAddress} />
               </div>
             </div>
@@ -249,6 +249,7 @@ var SignUp = React.createClass({
       })
         .done(function (response) {
           console.log(response);
+          $('#myForm').trigger("reset");
         })
         .fail(function (error) {
           console.log(error);
