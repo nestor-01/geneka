@@ -117,16 +117,16 @@ var SignUp = React.createClass({
                   </div>
                   <br/>
                   <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-md-6">
                       <div className="input-group">
-                        <input ref="addressTextField" type="text" className="form-control" name="address"data-validate="required" data-message-required="This is custom message for required field."  placeholder="Dirección" autoComplete="off" required />
+                        <input ref="birthdateTextField" type="text" className="form-control datepicker" name="birthdate" data-format="dd MM yyyy" data-validate="required" data-message-required="This is custom message for required field." placeholder="Fecha de nacimiento" data-date-format="dd-MM-yyyy" required />
                         <div className="input-group-addon">
-                          <i className="entypo-address"></i>
+                          <i className="entypo-calendar"></i>
                         </div>
                       </div>
                       <span className="errorSpace"></span>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-6">
                       <div className="input-group">
                         <input ref="phoneTextField" name="phoneTextField" type="number" ref="phoneTextField" className="form-control" name="phone"data-validate="required" data-message-required="This is custom message for required field." placeholder="Teléfono" autoComplete="off" required />
                         <div className="input-group-addon">
@@ -138,11 +138,11 @@ var SignUp = React.createClass({
                   </div>
                   <br/>
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-12">
                       <div className="input-group">
-                        <input ref="birthdateTextField" type="text" className="form-control datepicker" name="birthdate" data-format="dd MM yyyy" data-validate="required" data-message-required="This is custom message for required field." placeholder="Fecha de nacimiento" data-date-format="dd-MM-yyyy" required />
+                        <input ref="addressTextField" type="text" className="form-control" name="address"data-validate="required" data-message-required="This is custom message for required field."  placeholder="Dirección" autoComplete="off" required />
                         <div className="input-group-addon">
-                          <i className="entypo-calendar"></i>
+                          <i className="entypo-address"></i>
                         </div>
                       </div>
                       <span className="errorSpace"></span>
