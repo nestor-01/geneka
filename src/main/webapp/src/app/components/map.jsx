@@ -61,7 +61,7 @@ var MapContainer = React.createClass({
       }.bind(this));
     }.bind(this);
 
-    navigator.geolocation.getCurrentPosition(getAddress); //
+    navigator.geolocation.getCurrentPosition(getAddress);
   },
 
   render()
