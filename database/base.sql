@@ -78,7 +78,7 @@ DROP TABLE IF EXISTS `feedback`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `feedback` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `clasification_id_clasification` int(11) NOT NULL,
+  `clasification_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `comment` longtext,
   PRIMARY KEY (`id`),

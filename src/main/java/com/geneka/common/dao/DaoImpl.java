@@ -13,6 +13,8 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
+import com.geneka.common.util.Tools;
+
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -26,7 +28,7 @@ public class DaoImpl implements Dao{
 	public <T> T save(T entity) throws Exception {
 		checkNotNull(entity, "Entity must not be null");
 
-        Object pk = getPrimaryKeyValue(entity);
+        Object pk = Tools.getPrimaryKeyValue(entity);
         checkArgument(pk instanceof Integer, "Entity Id isn't Integer");
 
         return ((Integer)pk > 0)
@@ -126,29 +128,6 @@ public class DaoImpl implements Dao{
         return query.getResultList();
     }
 	
-	public static <T> Object getPrimaryKeyValue(T entity)
-    {
-        String pkfield = "id";
-
-        Object pkfiledValue = null;
-        for (Field field : entity.getClass().getDeclaredFields())
-        {
-            if (field.getName().trim().equalsIgnoreCase(pkfield.trim()))
-            {
-                org.springframework.util.ReflectionUtils.makeAccessible(field);
-                // We get its value with reflection
-                try
-                {
-                    pkfiledValue = field.get(entity);
-                }
-                catch (Exception e)
-                {
-                    throw new IllegalArgumentException(
-                            "Entity does not contains PK column: " + pkfield);
-                }
-            }
-        }
-        return pkfiledValue;
-    }
+	
 
 }

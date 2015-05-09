@@ -18,11 +18,11 @@ public class Product {
 	
 	private String description;
 	
-	private String codigo;
+	private String code;
 	
-	//private List<Category> categories;
-	
-	//private List<Image> images;
+	private List<Category> categories;
+
+	private List<Image> images;
 
 	public String getId() {
 		return id;
@@ -48,28 +48,28 @@ public class Product {
 		this.description = description;
 	}
 
-	public String getCodigo() {
-		return codigo;
+	public String getCode() {
+		return code;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
-//	public List<Category> getCategories() {
-//		return categories;
-//	}
-//
-//	public void setCategories(List<Category> categories) {
-//		this.categories = categories;
-//	}
-//
-//	public List<Image> getImages() {
-//		return images;
-//	}
-//
-//	public void setImages(List<Image> images) {
-//		this.images = images;
-//	}
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
 	
 }
